@@ -1,5 +1,5 @@
 # arduino
 
-![GitHub Logo](/images/setup.png)
+![GitHub Logo](/LEDWebServerLCD/images/setup.jpg)
 
-![GitHub Logo](/images/Webserver.png)
+![GitHub Logo](/LEDWebServerLCD/images/WebServer.png)
