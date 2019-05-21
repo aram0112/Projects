@@ -41,11 +41,12 @@ const int whiteLED = 4;
 const int redLED = 5;
 const int greenLED = 6;
 
+char status;
 
 void setup() {
   Serial.begin(9600);      // initialize serial communication
   Wire.begin(8);                // join i2c bus with address #8
-  Wire.onRequest(performRequest); // register event  
+  Wire.onRequest(); // register event  
 pinMode(redLED, OUTPUT);
 pinMode(yellowLED, OUTPUT);
 pinMode(greenLED, OUTPUT);
@@ -190,7 +191,7 @@ void showWebPage(WiFiClient client) {
 void performRequest(String line) {
   if (line.endsWith("GET /redLED/on")) {
     digitalWrite(redLED, HIGH);
-    char status == 2;
+    char status = 1;
   } else if (line.endsWith("GET /redLED/off")) {
     digitalWrite(redLED, LOW);
   } else if (line.endsWith("GET /yellowLED/on")) {
