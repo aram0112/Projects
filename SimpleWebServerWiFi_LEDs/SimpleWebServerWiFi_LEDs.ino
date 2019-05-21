@@ -190,7 +190,7 @@ void showWebPage(WiFiClient client) {
 void performRequest(String line) {
   if (line.endsWith("GET /redLED/on")) {
     digitalWrite(redLED, HIGH);
-    Wire.write("1");
+    Wire.write('1');
   } else if (line.endsWith("GET /redLED/off")) {
     digitalWrite(redLED, LOW);
   } else if (line.endsWith("GET /yellowLED/on")) {
