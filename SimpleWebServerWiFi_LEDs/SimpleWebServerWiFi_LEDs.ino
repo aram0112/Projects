@@ -121,28 +121,10 @@ void showWebPage(WiFiClient client) {
   client.println();
 
   // the content of the HTTP response follows the header:
-  client.println("<h1>Arduino Remote Control</h1>");
+  client.println("<h1><center>Arduino Remote Control</center></h1>");
+
+  client.print("<Center>");
   client.println("<table border=1 style='text-align:center'>");
-  client.println("<tr><th>Component</th><th>Status</th><th>Control</th></tr>");
-
-  // Red LED
-  client.print("<tr><td>Red LED</td><td>");
-  if (digitalRead(redLED)) {
-    client.print("<font style='color:green;'>ON</font>");
-  } else {
-    client.print("<font style='color:red;'>OFF</font>");
-  }
-  client.println("</td><td><a href='/redLED/on'>ON</a> / <a href='/redLED/off'>OFF</a></td></tr>");
-
-// White LED
-  client.print("<tr><td>White LED</td><td>");
-  if (digitalRead(whiteLED)) {
-    client.print("<font style='color:green;'>ON</font>");
-  } else {
-    client.print("<font style='color:red;'>OFF</font>");
-  }
-  client.println("</td><td><a href='/whiteLED/on'>ON</a> / <a href='/whiteLED/off'>OFF</a></td></tr>");
-  
   // Yellow LED
   client.print("<tr><td>Yellow LED</td><td>");
   if (digitalRead(yellowLED)) {
@@ -151,8 +133,8 @@ void showWebPage(WiFiClient client) {
     client.print("<font style='color:red;'>OFF</font>");
   }
   client.println("</td><td><a href='/yellowLED/on'>ON</a> / <a href='/yellowLED/off'>OFF</a></td></tr>");
-
-  // Blue LED
+  client.print("<br>"); 
+    // Blue LED
   client.print("<tr><td>Blue LED</td><td>");
   if (digitalRead(blueLED)) {
     client.print("<font style='color:green;'>ON</font>");
@@ -160,6 +142,26 @@ void showWebPage(WiFiClient client) {
     client.print("<font style='color:red;'>OFF</font>");
   }
   client.println("</td><td><a href='/blueLED/on'>ON</a> / <a href='/blueLED/off'>OFF</a></td></tr>");
+   client.print("<br>"); 
+ 
+// White LED
+  client.print("<tr><td>White LED</td><td>");
+  if (digitalRead(whiteLED)) {
+    client.print("<font style='color:green;'>ON</font>");
+  } else {
+    client.print("<font style='color:red;'>OFF</font>");
+  }
+  client.println("</td><td><a href='/whiteLED/on'>ON</a> / <a href='/whiteLED/off'>OFF</a></td></tr>");
+   client.print("<br>"); 
+ // Red LED
+  client.print("<tr><td>Red LED</td><td>");
+  if (digitalRead(redLED)) {
+    client.print("<font style='color:green;'>ON</font>");
+  } else {
+    client.print("<font style='color:red;'>OFF</font>");
+  }
+  client.println("</td><td><a href='/redLED/on'>ON</a> / <a href='/redLED/off'>OFF</a></td></tr>");
+   client.print("<br>"); 
 
   // Green LED
   client.print("<tr><td>Green LED</td><td>");
@@ -168,48 +170,58 @@ void showWebPage(WiFiClient client) {
   } else {
     client.print("<font style='color:red;'>OFF</font>");
   }
-  client.println("</td><td><a href='/greenLED/on'>ON</a> / <a href='/greenLED/off'>OFF</a></td></tr>");
-
+  client.print("</td><td><a href='/greenLED/on'>ON</a> / <a href='/greenLED/off'>OFF</a></td></tr>");
+client.println("</table>");
+client.print("</Center>");
 
 
   // The HTTP response ends with another blank line
   client.println();
 
   // ALL LEDS
-  client.print("<tr><td>ALL LEDS</td><td>");
+ // client.print("<tr><td>ALL LEDS</td><td>");
   
-  client.println("</td><td><a href='/AllLED/on'>ON</a> / <a href='/AllLED/off'>OFF</a></td></tr>");
+  //client.println("</td><td><a href='/AllLED/on'>ON</a> / <a href='/AllLED/off'>OFF</a></td></tr>");
 
-  client.println("</table>");
+  //client.println("</table>");
 
   // The HTTP response ends with another blank line
   client.println();
 
-  client.println("</table>");
+  
 }
 
 void performRequest(String line) {
   if (line.endsWith("GET /redLED/on")) {
     digitalWrite(redLED, HIGH);
-    signal = '1';
+    signal = '0';
   } else if (line.endsWith("GET /redLED/off")) {
     digitalWrite(redLED, LOW);
+    signal = '1';
   } else if (line.endsWith("GET /yellowLED/on")) {
     digitalWrite(yellowLED, HIGH);
+    signal = '2';
   } else if (line.endsWith("GET /yellowLED/off")) {
     digitalWrite(yellowLED, LOW);
+    signal = '3';
   } else if (line.endsWith("GET /greenLED/on")) {
     digitalWrite(greenLED, HIGH);
+    signal = '4';
   } else if (line.endsWith("GET /greenLED/off")) {
     digitalWrite(greenLED, LOW);
+    signal = '5';
   } else if (line.endsWith("GET /blueLED/on")) {
     digitalWrite(blueLED, HIGH);
+    signal ='6';
   } else if (line.endsWith("GET /blueLED/off")) {
     digitalWrite(blueLED, LOW);
+    signal = '7';
   } else if (line.endsWith("GET /whiteLED/on")) {
     digitalWrite(whiteLED, HIGH);
+    signal = '8';
   } else if (line.endsWith("GET /whiteLED/off")) {
     digitalWrite(whiteLED, LOW);
+    signal = '9';
   } else if (line.endsWith("GET /AllLED/on")) {
     digitalWrite(greenLED, HIGH);
     digitalWrite(redLED, HIGH);
@@ -224,7 +236,6 @@ void performRequest(String line) {
     digitalWrite(blueLED, LOW);
   } 
 
-  
 }
 
 void printWifiStatus() {
