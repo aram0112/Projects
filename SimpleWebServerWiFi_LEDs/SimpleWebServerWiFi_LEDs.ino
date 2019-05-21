@@ -190,7 +190,7 @@ void showWebPage(WiFiClient client) {
 void performRequest(String line) {
   if (line.endsWith("GET /redLED/on")) {
     digitalWrite(redLED, HIGH);
-    Wire.write('1');
+    char status == 2;
   } else if (line.endsWith("GET /redLED/off")) {
     digitalWrite(redLED, LOW);
   } else if (line.endsWith("GET /yellowLED/on")) {
@@ -247,7 +247,7 @@ void printWifiStatus() {
 }
 
 void requestEvent() {
-  Wire.write('1');
+  Wire.write(status);
    // respond with message of 6 bytes
   // as expected by master
 }
