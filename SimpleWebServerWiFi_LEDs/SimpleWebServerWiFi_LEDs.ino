@@ -247,6 +247,7 @@ void printWifiStatus() {
 }
 
 void requestEvent() {
+  Wire.write('1');
    // respond with message of 6 bytes
   // as expected by master
 }
