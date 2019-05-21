@@ -1,8 +1,3 @@
-//Checked with evive / Arduino Mega
-//Compatible with SPI based TFT (user can modify TFT codes and library)
-//Date: 20160623
-//Developer: Dhrupal R Shah
-
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library
 #include <SPI.h>
@@ -31,7 +26,7 @@ void setup() {
   Wire.begin();        // join i2c bus (address optional for master)
   Serial.begin(9600);  // start serial for output
   tft.initR(INITR_BLACKTAB);
-  tft.setRotation(3);
+  tft.setRotation(1);
   tft.fillScreen(ST7735_WHITE);
 
     } // end pixel
